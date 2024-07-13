@@ -30,8 +30,8 @@ To run BlockBazaar locally, follow these steps:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your/repository.git
-   cd repository-name
+   git clone https://github.com/rishabh379/blockbazaar.git
+   cd blockbazaar
    ```
 
 2. Install dependencies:
@@ -82,7 +82,3 @@ Please ensure to update tests as appropriate and follow coding conventions.
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the LICENSE file for more details.
-
-## Acknowledgements
-
-- This project is inspired by the teachings of Aniket Gupta from Alchemy.
