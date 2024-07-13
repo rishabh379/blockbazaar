@@ -17,9 +17,9 @@ module.exports = {
     hardhat: {
       chainId: 11155111
     },
-    sepolia: { // Here Use your own key // This is a sample account
-      url: "https://eth-sepolia.g.alchemy.com/v2/ImCo5EaxKphmGQ_DqeFqDcWrcwwqaneV",
-      accounts: [ '04a20c12d4cc455e5442bfa6198ad18c77451c109fc6d0474cb6829c372e12b1' ]
+    sepolia: {
+      url: process.env.REACT_APP_API_URL,
+      accounts: [ process.env.REACT_APP_PRIVATE_KEY ]
     }
   },
   solidity: {
