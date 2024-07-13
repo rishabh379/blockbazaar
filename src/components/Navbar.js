@@ -37,14 +37,14 @@ function updateButton() {
 async function connectWebsite() {
 
     const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    if(chainId !== '11155111')
-    {
-      //alert('Incorrect network! Switch your metamask network to Rinkeby');
-      await window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '11155111' }],
-     })
-    }  
+    if (chainId !== '0x11155111') {
+        // Switch to Sepolia Test Network
+        await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [{ chainId: '0x11155111' }],
+          rpcUrls: ['https://rpc.sepolia.network'],
+        })
+      }
     await window.ethereum.request({ method: 'eth_requestAccounts' })
       .then(() => {
         updateButton();
