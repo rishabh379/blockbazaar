@@ -37,12 +37,12 @@ function updateButton() {
 async function connectWebsite() {
 
     const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    if(chainId !== '0x11155111')
+    if(chainId !== '11155111')
     {
       //alert('Incorrect network! Switch your metamask network to Rinkeby');
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x11155111' }],
+        params: [{ chainId: '11155111' }],
      })
     }  
     await window.ethereum.request({ method: 'eth_requestAccounts' })
@@ -113,7 +113,7 @@ async function connectWebsite() {
               </li>              
               }  
               <li className="ml-4">
-                <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full text-sm transition duration-300 ease-in-out shadow-md" onClick={connectWebsite}>{connected? "Connected":"Connect Wallet"}</button> {/* Added more padding, rounded full and shadow */}
+                <button className="enableEthereumButton bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full text-sm transition duration-300 ease-in-out shadow-md" onClick={connectWebsite}>{connected? "Connected":"Connect"}</button> {/* Added more padding, rounded full and shadow */}
               </li>
             </ul>
           </li>
