@@ -35,23 +35,63 @@ function updateButton() {
 }
 
 async function connectWebsite() {
+  if (typeof window.ethereum === 'undefined') {
+      alert('Please install MetaMask to use this feature');
+      return;
+  }
 
-    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    if (chainId !== '0x11155111') {
-        // Switch to Sepolia Test Network
-        await window.ethereum.request({
-          method: 'wallet_addEthereumChain',
-          params: [{ chainId: '0x11155111' }],
-          rpcUrls: ['https://rpc.sepolia.network'],
-        })
+  try {
+      // Request account access
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+      // Check the current chain
+      const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+      
+      if (chainId !== '0xaa36a7') {  // Sepolia chainId in hex
+          try {
+              // Switch to Sepolia Test Network
+              await window.ethereum.request({
+                  method: 'wallet_switchEthereumChain',
+                  params: [{ chainId: '0xaa36a7' }],
+              });
+          } catch (switchError) {
+              // This error code indicates that the chain has not been added to MetaMask
+              if (switchError.code === 4902) {
+                  try {
+                      await window.ethereum.request({
+                          method: 'wallet_addEthereumChain',
+                          params: [{
+                              chainId: '0xaa36a7',
+                              chainName: 'Sepolia Test Network',
+                              nativeCurrency: {
+                                  name: 'Sepolia Ether',
+                                  symbol: 'SEP',
+                                  decimals: 18
+                              },
+                              rpcUrls: ['https://rpc.sepolia.org'],
+                              blockExplorerUrls: ['https://sepolia.etherscan.io']
+                          }],
+                      });
+                  } catch (addError) {
+                      console.error('Failed to add Sepolia network', addError);
+                      alert('Failed to add Sepolia network. Please add it manually in MetaMask.');
+                      return;
+                  }
+              } else {
+                  console.error('Failed to switch to Sepolia network', switchError);
+                  alert('Failed to switch to Sepolia network. Please switch manually in MetaMask.');
+                  return;
+              }
+          }
       }
-    await window.ethereum.request({ method: 'eth_requestAccounts' })
-      .then(() => {
-        updateButton();
-        console.log("here");
-        getAddress();
-        window.location.replace(location.pathname)
-      });
+
+      updateButton();
+      console.log("Connected to Sepolia network");
+      getAddress();
+  } catch (error) {
+      console.error('Failed to connect', error);
+      alert('Failed to connect. Please try again.');
+  }
 }
 
   useEffect(() => {
