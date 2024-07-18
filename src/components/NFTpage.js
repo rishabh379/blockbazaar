@@ -51,11 +51,12 @@ export default function NFTPage(props) {
 
     async function buyNFT(tokenId) {
         try {
-            // Initialize provider and signer
+            const ethers = require("ethers");
+            // After adding your Hardhat network to your Metamask, this code will get providers and signers
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
 
-            // Get contract instance
+            // Pull the deployed contract instance
             let contract = new ethers.Contract(MarketplaceJSON.address, MarketplaceJSON.abi, signer);
             const salePrice = ethers.utils.parseUnits(data.price, 'ether');
             
@@ -65,9 +66,15 @@ export default function NFTPage(props) {
                 throw new Error("Insufficient funds to complete the transaction.");
             }
 
+            // Estimate gas limit (optional)
+            const gasLimit = await contract.estimateGas.executeSale(tokenId, { value: salePrice });
+
             // Execute sale
             updateMessage("Buying the NFT... Please Wait (Up to 5 mins)");
-            let transaction = await contract.executeSale(tokenId, { value: salePrice });
+            let transaction = await contract.executeSale(tokenId, {
+                value: salePrice,
+                gasLimit: gasLimit.toString() // Optionally you can set a fixed gas limit
+            });
             await transaction.wait();
 
             alert('You successfully bought the NFT!');
