@@ -15,12 +15,15 @@ module.exports = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      chainId: 11155111
+      chainId: 1337
     },
-    sepolia: {
-      url: process.env.REACT_APP_API_URL,
-      accounts: [ process.env.REACT_APP_PRIVATE_KEY ]
+    localhost: {
+      url: "http://127.0.0.1:8545"
     }
+    // sepolia: {
+    //   url: process.env.REACT_APP_API_URL,
+    //   accounts: [ process.env.REACT_APP_PRIVATE_KEY ]
+    // }
   },
   solidity: {
     version: "0.8.4",

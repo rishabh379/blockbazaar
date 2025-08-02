@@ -1,13 +1,24 @@
-# BlockBazaar
+# BlockBazaar - NFT Marketplace
 
-BlockBazaar is a decentralized marketplace where users can buy and sell digital assets as NFTs securely on the Ethereum blockchain. Inspired by e-commerce platforms, it features smart contracts written in Solidity and utilizes Hardhat for testing and deploying these contracts. The platform's React front-end, powered by libraries like ethers.js and web3, ensures seamless interaction with Ethereum, while Pinata facilitates IPFS storage for NFT metadata. Users can manage their digital assets through a profile section, view owned NFTs, and participate in transparent, peer-to-peer transactions without intermediaries. Deployment to the Sepolia test network is simplified with command-line integration, enabling developers to contribute and enhance the platform's capabilities.
+A complete decentralized NFT marketplace built with Solidity, React, and Web3 technologies.
 
-## Features
+BlockBazaar is a decentralized marketplace where users can buy and sell digital assets as NFTs securely on the Ethereum blockchain. Inspired by e-commerce platforms, it features smart contracts written in Solidity and utilizes Hardhat for testing and deploying these contracts. The platform's React front-end, powered by libraries like ethers.js and web3, ensures seamless interaction with Ethereum, while Pinata facilitates IPFS storage for NFT metadata.
 
-- Decentralized Marketplace: Facilitates peer-to-peer transactions without intermediaries, ensuring transparency and security through blockchain technology.
-- Smart Contracts: Implements business logic and escrow services using Solidity, ensuring trustless interactions between buyers and sellers.
-- NFT Support: Users can upload their digital assets as NFTs using Pinata for IPFS storage, and sell them on BlockBazaar.
-- Profile Section: Users can view their owned NFTs and manage their digital assets.
+## 🚀 Features
+
+### Smart Contract Features
+- **NFT Minting**: Create and mint NFTs with metadata
+- **Marketplace Listing**: List NFTs for sale with custom pricing  
+- **Secure Trading**: Escrow-based trading system
+- **Royalty System**: Marketplace fee structure
+- **Ownership Management**: Track NFT ownership and transfers
+- **Resale Functionality**: Allow secondary market sales
+
+### Platform Features
+- **Decentralized Marketplace**: Facilitates peer-to-peer transactions without intermediaries, ensuring transparency and security through blockchain technology
+- **Smart Contracts**: Implements business logic and escrow services using Solidity, ensuring trustless interactions between buyers and sellers
+- **NFT Support**: Users can upload their digital assets as NFTs using Pinata for IPFS storage, and sell them on BlockBazaar
+- **Profile Section**: Users can view their owned NFTs and manage their digital assets
 - React Front-end: Provides an intuitive and familiar user interface similar to traditional e-commerce platforms.
 - Testing and Deployment: Uses Hardhat for testing smart contracts locally and deploying them to Ethereum networks.
 
