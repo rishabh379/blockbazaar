@@ -293,10 +293,7 @@ contract NFTMarketplace is ERC721URIStorage, ReentrancyGuard, Ownable {
         // Transfer the NFT to buyer
         _transfer(address(this), msg.sender, tokenId);
         
-        // Transfer listing fee to marketplace owner
-        payable(owner()).transfer(listPrice);
-        
-        // Transfer sale amount to seller
+        // Transfer full sale amount to seller (listing fee was already paid during listing)
         payable(seller).transfer(msg.value);
 
         emit TokenSold(tokenId, seller, msg.sender, price);
